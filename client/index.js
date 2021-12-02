@@ -5,28 +5,29 @@ console.log('hi from the index.js file');
 let form = document.getElementById('chat-form');
 let input = document.getElementById('inputField');
 let btnAll = document.getElementById('btnAll');
+let btnMe = document.getElementById('btnMe');
 let target = document.getElementById('target');
-// btnAll.addEventListener('click', () => {
-//     socket.emit('sendToAll', message);
-// })
 
-form.addEventListener('submit', function (e) {
+btnAll.addEventListener('click', function (e) {
     e.preventDefault();
     if (input.value) {
-        socket.emit('chat message', input.value);
+        socket.emit('sendToAll', input.value);
         input.value = '';
     }
 });
 
-
-// let target = document.getElementById('target');
-
-socket.on('chat message', function (msg) {
+socket.on('sendToAll', function (msg) {
     target.innerHTML += '<br>' + msg
-    // messages.appendChild(item);
-    // window.scrollTo(0, document.body.scrollHeight);
 });
 
-// socket.on('displayMessage', (message) => {
-//     target.innerHTML += '<br>' + message;
-// });
+btnMe.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (input.value) {
+        socket.emit('sendToMe', input.value);
+        input.value = '';
+    }
+});
+
+socket.on('sendToMe', function (msg) {
+    target.innerHTML += '<br>' + msg
+});

@@ -13,27 +13,15 @@ server.listen(8080, () => {
 const io = require('socket.io')(server);
 
 let counter = 0;
-// let message = document.getElementById('inputField').value;
-
-// io.on('connection', (socket) => {
-//     counter++;
-//     console.log(counter + ' someone connected');
-
-//     socket.on('sendToAll', (message) => {
-//         io.emit("displayMessage", (message));
-//     });
-
-//     socket.on('displayMessage', (message) => {
-//         console.log();
-//         let target = document.getElementById('target');
-//         target.innerHTML += '<br>' + message;
-//     });
-
-// });
 
 io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
+    socket.on('sendToAll', (msg) => {
+        io.emit('sendToAll', msg);
+        console.log('message: ' + msg);
+    });
+
+    socket.on('sendToMe', (msg) => {
+        socket.emit('sendToMe', msg);
         console.log('message: ' + msg);
     });
 });
