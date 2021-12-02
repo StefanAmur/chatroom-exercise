@@ -14,8 +14,17 @@
 
     <h1>hi from the html file</h1>
     <p>I should have the style applied and js file linked, check console</p>
+    <br>
+    <form action="" id="chat-form">
+        <input type="text" id="inputField" autocomplete="off">
+        <button class="button" id="btnAll">Send to all</button>
+        <!-- <button class="button">Send to me</button> -->
+    </form>
 
-    <script src="./script.js"></script>
+    <div id="target"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
