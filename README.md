@@ -1,1 +1,1 @@
-# chatroom-exercise
+# Chatroom exercise (with Sockets IO)

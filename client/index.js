@@ -5,17 +5,10 @@ let input = document.getElementById('inputField');
 let btnAll = document.getElementById('btnAll');
 let btnMe = document.getElementById('btnMe');
 let target = document.getElementById('target');
+let list = document.getElementById('list');
 
-// let users = [];
 let user = prompt('Please enter a user name');
-
-var clients = io.sockets;
-console.log(clients);
-
-// if (user != null) {
-//     users.push(user);
-//     console.log(users);
-// }
+socket.emit('login', user);
 
 btnAll.addEventListener('click', function (e) {
     e.preventDefault();
@@ -38,7 +31,6 @@ btnMe.addEventListener('click', function (e) {
     }
 });
 
-
 //send to me
 socket.on('sendToMe', function (msg) {
     target.innerHTML += '<br>' + msg
@@ -47,4 +39,10 @@ socket.on('sendToMe', function (msg) {
 // users list?
 socket.on('userList', function (users) {
     console.log(users);
+    users.forEach(element => {
+        let li = document.createElement('li');
+        li.innerHTML = element;
+        // document.getElementById('list').innerHTML += '<br>' + element;
+        list.appendChild(li);
+    });
 })

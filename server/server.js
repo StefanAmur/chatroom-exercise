@@ -19,16 +19,16 @@ let users = [];
 io.on('connection', (socket) => {
     socket.on('sendToAll', (user, msg) => {
         io.emit('sendToAll', user, msg);
-        if (!users.includes(user)) {
-            users.push(user);
-        }
-
-        console.log(users);
-        io.emit('userList', users)
     });
 
     socket.on('sendToMe', (msg) => {
         socket.emit('sendToMe', msg);
     });
 
+    socket.on('login', (user) => {
+        if (!users.includes(user)) {
+            users.push(user);
+        }
+        socket.emit('userList', users)
+    })
 });

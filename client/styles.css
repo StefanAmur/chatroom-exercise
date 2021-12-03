@@ -45,14 +45,58 @@ body {
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 6fr 1fr;
+  grid-template-rows: 6fr repeat(2, 0.6fr);
 
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 0 8px 8px 0;
 }
 
+#chat-form {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 4px;
+  grid-column: 1 / 13;
+  grid-row: 2 / 4;
+  margin: 4px;
+}
+
+#inputField {
+  grid-column: 1 / 10;
+  grid-row: 1 / 4;
+  margin: 16px 12px 16px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+#inputField:focus-visible {
+  outline: none;
+}
+
+#btnAll {
+  grid-column: 10 / 13;
+  grid-row: 1 / 2;
+}
+
+#btnMe {
+  grid-column: 10 / 13;
+  grid-row: 2 / 3;
+}
+
+.button {
+  border: none;
+  border-radius: 4px;
+}
+
 #target {
   grid-column: 1 / 13;
   grid-row: 1 / 2;
+
+  font-size: 1.4rem;
+}
+
+#list {
+  list-style: none;
 }
