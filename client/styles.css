@@ -97,6 +97,15 @@ body {
   font-size: 1.4rem;
 }
 
+.usrTitle {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 10px;
+}
+
 #list {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 10px;
   list-style: none;
 }

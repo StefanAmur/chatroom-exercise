@@ -42,7 +42,6 @@ socket.on('userList', function (users) {
     users.forEach(element => {
         let li = document.createElement('li');
         li.innerHTML = element;
-        // document.getElementById('list').innerHTML += '<br>' + element;
         list.appendChild(li);
     });
 })
