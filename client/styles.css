@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
+body {
+  background: linear-gradient(220deg, #ee7752, #ec4b89, #2bb2e4, #2edfb5);
+  background-size: 400% 400%;
+  animation: gradient 14s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .main {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -12,19 +31,25 @@
 }
 
 .left {
-  border: 1px solid green;
   grid-column: 3 / 5;
   grid-row: 3 / 10;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px 0 0 8px;
 }
 
 .right {
-  border: 1px solid blue;
   grid-column: 5 / 11;
   grid-row: 3 /10;
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 6fr 1fr;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0 8px 8px 0;
 }
 
 #target {

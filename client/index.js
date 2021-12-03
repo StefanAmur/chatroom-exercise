@@ -1,23 +1,33 @@
 let socket = io.connect();
 
-console.log('hi from the index.js file');
-
 let form = document.getElementById('chat-form');
 let input = document.getElementById('inputField');
 let btnAll = document.getElementById('btnAll');
 let btnMe = document.getElementById('btnMe');
 let target = document.getElementById('target');
 
+// let users = [];
+let user = prompt('Please enter a user name');
+
+var clients = io.sockets;
+console.log(clients);
+
+// if (user != null) {
+//     users.push(user);
+//     console.log(users);
+// }
+
 btnAll.addEventListener('click', function (e) {
     e.preventDefault();
     if (input.value) {
-        socket.emit('sendToAll', input.value);
+        socket.emit('sendToAll', user, input.value);
         input.value = '';
     }
 });
 
-socket.on('sendToAll', function (msg) {
-    target.innerHTML += '<br>' + msg
+// send to all
+socket.on('sendToAll', function (user, msg) {
+    target.innerHTML += '<br>' + user + ': ' + msg;
 });
 
 btnMe.addEventListener('click', function (e) {
@@ -28,6 +38,13 @@ btnMe.addEventListener('click', function (e) {
     }
 });
 
+
+//send to me
 socket.on('sendToMe', function (msg) {
     target.innerHTML += '<br>' + msg
 });
+
+// users list?
+socket.on('userList', function (users) {
+    console.log(users);
+})

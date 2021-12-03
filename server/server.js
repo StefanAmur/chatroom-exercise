@@ -14,14 +14,21 @@ const io = require('socket.io')(server);
 
 let counter = 0;
 
+let users = [];
+
 io.on('connection', (socket) => {
-    socket.on('sendToAll', (msg) => {
-        io.emit('sendToAll', msg);
-        console.log('message: ' + msg);
+    socket.on('sendToAll', (user, msg) => {
+        io.emit('sendToAll', user, msg);
+        if (!users.includes(user)) {
+            users.push(user);
+        }
+
+        console.log(users);
+        io.emit('userList', users)
     });
 
     socket.on('sendToMe', (msg) => {
         socket.emit('sendToMe', msg);
-        console.log('message: ' + msg);
     });
+
 });
